@@ -13,11 +13,11 @@ public class UserVo {
     public void setPassword(String password) {
         this.password = password;
     }
-    private long userId;
+    private Long userId;
     private String email;
     private String contact;
     private String password;
-    private Set<RoleVo> authorities;
+    private Set<RoleVo> roles;
 
     public UserVo() {
     }
@@ -46,18 +46,18 @@ public class UserVo {
         this.contact = contact;
     }
 
-    public Set<RoleVo> getAuthorities() {
-        return authorities;
+    public Set<RoleVo> getRoles() {
+        return roles;
     }
 
-    public void setAuthorities(Set<RoleVo> authorities) {
-        this.authorities = authorities;
+    public void setRoles(Set<RoleVo> roles) {
+        this.roles = roles;
     }
 
-    public UserVo(String username, String email, String contact, Set<RoleVo> authorities) {
+    public UserVo(String username, String email, String contact, Set<RoleVo> roles) {
         this.username = username;
         this.email = email;
         this.contact = contact;
-        this.authorities = authorities;
+        this.roles = roles;
     }
 }

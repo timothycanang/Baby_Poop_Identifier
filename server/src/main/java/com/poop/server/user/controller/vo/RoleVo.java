@@ -1,30 +1,24 @@
 package com.poop.server.user.controller.vo;
 
+
+import com.poop.server.user.domain.TrgEnumRole;
+
 public class RoleVo {
+
+    private TrgEnumRole role;
+
     public RoleVo() {
     }
 
-    private long authId;
-private String authName;
-
-    public RoleVo(long authId, String authName) {
-        this.authId = authId;
-        this.authName = authName;
+    public RoleVo(TrgEnumRole role) {
+        this.role = role;
     }
 
-    public String getAuthName() {
-        return authName;
+    public TrgEnumRole getRole() {
+        return role;
     }
 
-    public void setAuthName(String authName) {
-        this.authName = authName;
-    }
-
-    public long getAuthId() {
-        return authId;
-    }
-
-    public void setAuthId(long authId) {
-        this.authId = authId;
+    public void setRole(TrgEnumRole role) {
+        this.role = role;
     }
 }

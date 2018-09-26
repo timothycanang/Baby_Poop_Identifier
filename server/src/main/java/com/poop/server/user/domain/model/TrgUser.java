@@ -6,9 +6,9 @@ import java.util.Set;
 
 public interface TrgUser extends DateAudit {
 
-    long getUserId();
+    Long getUserId();
 
-    void setUserId(long dtUserId);
+    void setUserId(Long dtUserId);
 
 
     String getUsername();
@@ -39,7 +39,7 @@ public interface TrgUser extends DateAudit {
     boolean getUserEnabled();
     void setUserEnabled(boolean enabled);
 
-     Set<TrgRoleImpl> getRoles();
+    Set<TrgUserRoleImpl> getRoles();
 
-     void setRoles(Set<TrgRoleImpl> roles);
+     void setRoles(Set<TrgUserRoleImpl> roles);
 }

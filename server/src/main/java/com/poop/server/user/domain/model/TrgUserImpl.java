@@ -6,34 +6,32 @@ import com.poop.server.core.domain.model.DateAuditImpl;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity(name = "EmgUser")
-@Table(name = "dt_user")
+@Entity(name = "User")
+@Table(name = "trg_user")
 public class TrgUserImpl extends DateAuditImpl implements TrgUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "dt_user_id")
-    private long userId;
+    @Column(name = "id")
+    private Long userId;
 
-    @Column(name = "dt_user_name", unique = true)
-    private String userName;
-    @Column(name = "dt_user_contact")
+    @Column(name = "username", unique = true)
+    private String username;
+    @Column(name = "contact")
     private String userContact;
-    @Column(name = "dt_user_email")
+    @Column(name = "email")
     private String userEmail;
     //  @Column(name= "dt_user_access_level_id")
-//  private long dtUserAccessLevel;
-    @Column(name = "dt_user_password")
+//  private Long dtUserAccessLevel;
+    @Column(name = "password")
     private String userPassword;
-    @Column(name = "dt_user_active_status")
+    @Column(name = "active_status")
     private boolean userActiveStatus;
-
-    @Column(name="dt_user_enabled")
+    @Column(name="user_enabled")
     private boolean userEnabled;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "dt_user_role", joinColumns = @JoinColumn(name = "dt_user_id"), inverseJoinColumns = @JoinColumn(name = "dt_role_id"))
-    private Set<TrgRoleImpl> roles;
+    @OneToMany(mappedBy="userId")
+    private Set<TrgUserRoleImpl> roles;
 
     public TrgUserImpl() {
     }
@@ -43,15 +41,15 @@ public class TrgUserImpl extends DateAuditImpl implements TrgUser {
         user.userContact = user.getUserContact();
         user.userEmail = user.getUserEmail();
         user.userId = user.getUserId();
-        user.userName = user.getUsername();
+        user.username = user.getUsername();
         user.userPassword = user.getUserPassword();
         user.roles = user.getRoles();
         user.userEnabled = user.getUserEnabled();
     }
 
 
-    public TrgUserImpl(String userName, String dtUserContact, String userEmail, String userPassword, boolean userActiveStatus, Set<TrgRoleImpl> roles) {
-        this.userName = userName;
+    public TrgUserImpl(String username, String dtUserContact, String userEmail, String userPassword, boolean userActiveStatus, Set<TrgUserRoleImpl> roles) {
+        this.username = username;
         this.userContact = dtUserContact;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
@@ -60,21 +58,21 @@ public class TrgUserImpl extends DateAuditImpl implements TrgUser {
     }
 
 
-    public long getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(long dtUserId) {
+    public void setUserId(Long dtUserId) {
         this.userId = dtUserId;
     }
 
     public String getUsername() {
-        return userName;
+        return username;
     }
 
     public void setUsername(String dtUserName) {
 
-        this.userName = dtUserName;
+        this.username = dtUserName;
     }
 
     public String getUserContact() {
@@ -119,12 +117,12 @@ public class TrgUserImpl extends DateAuditImpl implements TrgUser {
         this.userEnabled = enabled;
     }
 
-    public Set<TrgRoleImpl> getRoles() {
+    @Override
+    public Set<TrgUserRoleImpl> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<TrgRoleImpl> roles) {
+    public void setRoles(Set<TrgUserRoleImpl> roles) {
         this.roles = roles;
     }
-
 }
