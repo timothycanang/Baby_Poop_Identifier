@@ -39,6 +39,7 @@ public class SecurityController {
         }
 
         TrgUser user = userService.findUserByUsername(input.getUsername());
+        if(user == null) throw new Exception("User not found");
         String pwd = user.getUserPassword();
 
         if (!passwordEncoder.matches(input.getPassword(), pwd)) {

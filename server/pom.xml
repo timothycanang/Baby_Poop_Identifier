@@ -165,6 +165,12 @@
             <version>1.11.0-rc0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.bytedeco.javacpp-presets</groupId>
+            <artifactId>tensorflow</artifactId>
+            <version>1.9.0-1.4.2</version>
+        </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/com.google.cloud/google-cloud-automl -->
         <!--<dependency>-->

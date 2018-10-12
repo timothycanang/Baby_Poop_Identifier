@@ -21,11 +21,11 @@ public class TrgCustomUserDetailsService implements UserDetailsService {
         this.emgUserRepository = emgUserRepository;
     }
 
-            @Override
-            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<TrgUserImpl> optionalUser = emgUserRepository.findByUsername(username);
 
-        optionalUser.orElseThrow(()-> new UsernameNotFoundException("Username Not Found"));
+        optionalUser.orElseThrow(() -> new UsernameNotFoundException("Username Not Found"));
 
         return optionalUser.map(
                 TrgCustomUserDetails::new
